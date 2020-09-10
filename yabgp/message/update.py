@@ -390,7 +390,7 @@ class Update(object):
                 decode_value = binascii.b2a_hex(attr_value)
             attributes[type_code] = decode_value
         if bgpls_attr:
-            attributes.update(LinkState.unpack(bgpls_pro_id=bgpls_pro_id, data=attr_value).dict())
+            attributes.update(LinkState.unpack(bgpls_pro_id=bgpls_pro_id, data=bgpls_attr).dict())
         evpn_overlay = EVPN.signal_evpn_overlay(attributes)
         if evpn_overlay['evpn'] and evpn_overlay['encap_ec']:
             if bgp_cons.BGPTYPE_PMSI_TUNNEL in attributes:
